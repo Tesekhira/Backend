@@ -20,7 +20,7 @@ import java.util.List;
 public class LigneCommandeCtrl {
     @Autowired
     private LigneCommandeService ligneCommandeService;
-
+    /**/
     @RequestMapping(value="/all",method= RequestMethod.GET)
     public List<LigneCommande> getAll()
     {

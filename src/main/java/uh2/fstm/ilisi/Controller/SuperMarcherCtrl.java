@@ -22,7 +22,7 @@ public class SuperMarcherCtrl {
     @Autowired
     SuperMarcherService supermarcherservice;
 
-
+    /**/
     @RequestMapping(value="/all",method= RequestMethod.GET)
     public List<SuperMarcher> getAll()
     {

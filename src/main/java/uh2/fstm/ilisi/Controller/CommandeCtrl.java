@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/app/cmd")
 public class CommandeCtrl {
+    /**/
     @Autowired
     private CommandeService commandeService;
 
