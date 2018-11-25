@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import uh2.fstm.ilisi.Model.BO.Utilisateur;
 import uh2.fstm.ilisi.Model.DAO.UtilisateurDAO;
+import uh2.fstm.ilisi.Service.UtilisateurService;
 
 import java.util.List;
 
@@ -19,29 +20,29 @@ import java.util.List;
 @RequestMapping("/app/user")
 public class UtilisateurCtrl {
     @Autowired
-    private UtilisateurDAO ustilisateurDao;
+    private UtilisateurService utilisateurService;
 
     @RequestMapping(value="/all",method= RequestMethod.GET)
     public List<Utilisateur> getAll()
     {
-        return (List<Utilisateur>) ustilisateurDao.findAll();
+        return (List<Utilisateur>) utilisateurService.Retreive();
     }
 
     @RequestMapping(value="/create",method=RequestMethod.POST)
     public void create(@RequestBody Utilisateur user)
     {
-        ustilisateurDao.save(user);
+        utilisateurService.Insertion(user);
     }
     @RequestMapping(value="/delete/{id}",method=RequestMethod.DELETE)
     public void delete(@PathVariable long id)
     {
-        ustilisateurDao.delete(id);
+        utilisateurService.Supprimer(id);
 
     }
     @RequestMapping(value="/update",method=RequestMethod.PUT)
     public void update(@RequestBody Utilisateur user)
     {
-        ustilisateurDao.save(user);
+        utilisateurService.Modifier(user);
     }
 
 }
