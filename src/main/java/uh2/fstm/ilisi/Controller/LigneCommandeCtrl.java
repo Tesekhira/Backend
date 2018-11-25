@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import uh2.fstm.ilisi.Model.BO.LigneCommande;
 import uh2.fstm.ilisi.Model.DAO.LigneCommandeDAO;
+import uh2.fstm.ilisi.Service.LigneCommandeService;
 
 import java.util.List;
 
@@ -18,29 +19,29 @@ import java.util.List;
 @RequestMapping("/app/lignecmd")
 public class LigneCommandeCtrl {
     @Autowired
-    private LigneCommandeDAO ligneCommandeDao;
+    private LigneCommandeService ligneCommandeService;
 
     @RequestMapping(value="/all",method= RequestMethod.GET)
     public List<LigneCommande> getAll()
     {
-        return (List<LigneCommande>) ligneCommandeDao.findAll();
+        return (List<LigneCommande>) ligneCommandeService.Retreive();
     }
 
     @RequestMapping(value="/create",method=RequestMethod.POST)
     public void create(@RequestBody LigneCommande lign)
     {
-        ligneCommandeDao.save(lign);
+        ligneCommandeService.Insertion(lign);
     }
     @RequestMapping(value="/delete/{id}",method=RequestMethod.DELETE)
     public void delete(@PathVariable long id)
     {
-        ligneCommandeDao.delete(id);
+        ligneCommandeService.Supprimer(id);
 
     }
     @RequestMapping(value="/update",method=RequestMethod.PUT)
     public void update(@RequestBody LigneCommande lign)
     {
-        ligneCommandeDao.save(lign);
+        ligneCommandeService.Modifier(lign);
     }
 
 }

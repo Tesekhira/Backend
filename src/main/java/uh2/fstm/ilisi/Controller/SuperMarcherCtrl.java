@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import uh2.fstm.ilisi.Model.BO.SuperMarcher;
 import uh2.fstm.ilisi.Model.DAO.SuperMarcherDAO;
+import uh2.fstm.ilisi.Service.SuperMarcherService;
 
 import java.util.List;
 
@@ -17,29 +18,31 @@ import java.util.List;
 @RestController
 @RequestMapping("/app/marcher")
 public class SuperMarcherCtrl {
+
     @Autowired
-    private SuperMarcherDAO SuperMarcherDao;
+    SuperMarcherService supermarcherservice;
+
 
     @RequestMapping(value="/all",method= RequestMethod.GET)
     public List<SuperMarcher> getAll()
     {
-        return (List<SuperMarcher>) SuperMarcherDao.findAll();
+        return supermarcherservice.Retreive();
     }
 
     @RequestMapping(value="/create",method=RequestMethod.POST)
     public void create(@RequestBody SuperMarcher sup)
     {
-        SuperMarcherDao.save(sup);
+
     }
     @RequestMapping(value="/delete/{id}",method=RequestMethod.DELETE)
     public void delete(@PathVariable Long id)
     {
-        SuperMarcherDao.delete(id);
+        supermarcherservice.Supprimer(id);
     }
     @RequestMapping(value="/update",method=RequestMethod.PUT)
     public void update(@RequestBody SuperMarcher sup)
     {
-        SuperMarcherDao.save(sup);
+        supermarcherservice.Modifier(sup);
     }
 
 }
