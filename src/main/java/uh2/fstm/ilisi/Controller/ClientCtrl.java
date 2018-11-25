@@ -39,7 +39,7 @@ public class ClientCtrl {
 
     }
     @RequestMapping(value="/update",method=RequestMethod.PUT)
-    public void update(@RequestBody Client cli)
+    public void update(@RequestBody  Client cli)
     {
         clientService.Modifier(cli);
     }

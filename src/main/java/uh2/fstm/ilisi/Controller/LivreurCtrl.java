@@ -39,7 +39,7 @@ public class LivreurCtrl {
 
     }
     @RequestMapping(value="/update",method=RequestMethod.PUT)
-    public void update(@RequestBody Livreur liv)
+    public void update(@RequestBody  Livreur liv)
     {
         livreurService.Modifier(liv);
     }

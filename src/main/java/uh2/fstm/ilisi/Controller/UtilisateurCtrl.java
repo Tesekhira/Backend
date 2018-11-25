@@ -40,7 +40,7 @@ public class UtilisateurCtrl {
 
     }
     @RequestMapping(value="/update",method=RequestMethod.PUT)
-    public void update(@RequestBody Utilisateur user)
+    public void update(@RequestBody  Utilisateur user)
     {
         utilisateurService.Modifier(user);
     }
