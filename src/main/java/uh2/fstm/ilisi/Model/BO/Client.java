@@ -15,7 +15,7 @@ import java.util.Vector;
 @Entity
 @PrimaryKeyJoinColumn(name="id")
 public class Client extends Utilisateur{
-    /*zeeeeebiiiiii kbiiiiiir*/
+
     private String adress;
 
     @OneToMany(mappedBy = "client")
