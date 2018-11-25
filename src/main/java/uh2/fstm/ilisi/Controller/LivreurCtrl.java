@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import uh2.fstm.ilisi.Model.BO.Livreur;
 import uh2.fstm.ilisi.Model.DAO.LivreurDAO;
+import uh2.fstm.ilisi.Service.LivreurService;
 
 import java.util.List;
 
@@ -18,29 +19,29 @@ import java.util.List;
 @RequestMapping("/app/livreur")
 public class LivreurCtrl {
     @Autowired
-    private LivreurDAO livreurDao;
+    private LivreurService livreurService;
 
     @RequestMapping(value="/all",method= RequestMethod.GET)
     public List<Livreur> getAll()
     {
-        return (List<Livreur>) livreurDao.findAll();
+        return (List<Livreur>) livreurService.Retreive();
     }
 
     @RequestMapping(value="/create",method=RequestMethod.POST)
     public void create(@RequestBody Livreur liv)
     {
-        livreurDao.save(liv);
+        livreurService.Insertion(liv);
     }
     @RequestMapping(value="/delete/{id}",method=RequestMethod.DELETE)
     public void delete(@PathVariable long id)
     {
-        livreurDao.delete(id);
+        livreurService.Supprimer(id);
 
     }
     @RequestMapping(value="/update",method=RequestMethod.PUT)
-    public void update(@RequestBody Livreur liv)
+    public void update(@RequestBody  Livreur liv)
     {
-        livreurDao.save(liv);
+        livreurService.Modifier(liv);
     }
 
 }

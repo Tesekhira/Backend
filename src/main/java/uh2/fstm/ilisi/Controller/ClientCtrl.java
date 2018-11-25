@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import uh2.fstm.ilisi.Model.BO.Client;
 import uh2.fstm.ilisi.Model.DAO.ClientDAO;
+import uh2.fstm.ilisi.Service.ClientService;
 
 import java.util.List;
 
@@ -18,29 +19,29 @@ import java.util.List;
 @RequestMapping("/app/client")
 public class ClientCtrl {
     @Autowired
-    private ClientDAO clientDao;
+    private ClientService clientService;
 
     @RequestMapping(value="/all",method= RequestMethod.GET)
     public List<Client> getAll()
     {
-        return (List<Client>) clientDao.findAll();
+        return (List<Client>) clientService.Retreive();
     }
 
     @RequestMapping(value="/create",method=RequestMethod.POST)
     public void create(@RequestBody Client cli)
     {
-        clientDao.save(cli);
+        clientService.Insertion(cli);
     }
     @RequestMapping(value="/delete/{id}",method=RequestMethod.DELETE)
     public void delete(@PathVariable long id)
     {
-        clientDao.delete(id);
+        clientService.Supprimer(id);
 
     }
     @RequestMapping(value="/update",method=RequestMethod.PUT)
-    public void update(@RequestBody Client cli)
+    public void update(@RequestBody  Client cli)
     {
-        clientDao.save(cli);
+        clientService.Modifier(cli);
     }
 
 }
